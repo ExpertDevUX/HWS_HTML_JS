@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HWS • Hacker Web School</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand">HWS</div>
+      <button id="menuToggle" class="menu-btn" aria-label="Open menu">
+        <svg class="icon" viewBox="0 0 24 24" width="22" height="22"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+      </button>
+      <nav class="nav">
+        <a class="nav-link" href="#home" data-route="home" data-i18n="nav.home">Home</a>
+        <a class="nav-link" href="#about" data-route="about" data-i18n="nav.about">About Us</a>
+        <a class="nav-link" href="#courses" data-route="courses" data-i18n="nav.courses">Courses</a>
+        <a class="nav-link" href="#blogs" data-route="blogs" data-i18n="nav.blogs">Blogs</a>
+        <a class="nav-link" href="#contact" data-route="contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <div class="controls">
+        <button id="langToggle" class="icon-btn" aria-label="Toggle language">
+          <svg class="icon" viewBox="0 0 24 24" width="22" height="22">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm0 2c2.7 0 5.1 1.2 6.7 3.1H5.3C6.9 5.2 9.3 4 12 4Zm-8 8c0-.7.1-1.4.3-2h15.4c.2.6.3 1.3.3 2s-.1 1.4-.3 2H4.3c-.2-.6-.3-1.3-.3-2Zm1.3 4.9h13.4C17.1 19 14.7 20 12 20s-5.1-1-6.7-3.1Z"></path>
+          </svg>
+        </button>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle dark/light">
+          <svg class="icon" id="iconMoon" viewBox="0 0 24 24" width="22" height="22">
+            <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 109.8 9.8Z"></path>
+          </svg>
+          <svg class="icon hidden" id="iconSun" viewBox="0 0 24 24" width="22" height="22">
+            <path d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5.6 5.6L4.2 4.2m15.6 15.6l-1.4-1.4M18.4 5.6l1.4-1.4M5.6 18.4l-1.4 1.4"></path>
+            <circle cx="12" cy="12" r="4"></circle>
+          </svg>
+        </button>
+        <a class="auth-link nav-link" data-route="signin" href="#signin" data-i18n="nav.signin">Sign In</a>
+        <a class="auth-link nav-link" data-route="register" href="#register" data-i18n="nav.register">Register</a>
+        <div id="userMenu" class="user-menu hidden">
+          <span id="userName"></span>
+          <div class="user-dropdown">
+            <a href="#dashboard" class="user-link" data-route="dashboard">Dashboard</a>
+            <a href="#profile" class="user-link" data-route="profile">Profile</a>
+            <a href="#theme-editor" class="user-link" data-route="theme-editor">Theme Editor</a>
+            <button id="signoutBtn" class="user-link danger">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content" id="mainContent">
+      <div id="globalLoader" class="loader-overlay hidden">
+        <div class="loader-spinner"></div>
+      </div>
+      <div id="errorMessage" class="error-message hidden"></div>
+      <section id="home" class="page-section active">
+        <div class="hero">
+          <div class="hero-text">
+            <div class="logo">
+              <svg class="logo-mark" viewBox="0 0 64 64" width="56" height="56">
+                <circle cx="32" cy="32" r="30" fill="none" stroke="var(--accent)" stroke-width="3"></circle>
+                <rect x="18" y="22" width="28" height="20" fill="none" stroke="var(--accent)" stroke-width="3" rx="4"></rect>
+                <path d="M26 32h12" stroke="var(--accent)" stroke-width="3"></path>
+                <path d="M24 38h16" stroke="var(--accent)" stroke-width="2"></path>
+                <text x="32" y="18" font-size="10" text-anchor="middle" fill="var(--accent)">HWS</text>
+              </svg>
+              <div class="logo-title" data-i18n="home.logo.title">HWS Security</div>
+            </div>
+            <h1 data-i18n="home.hero.title">Build like a hacker</h1>
+            <p class="lead" data-i18n="home.hero.subtitle">Fast, minimal, terminal‑green web learning.</p>
+            <div class="term">
+              <div class="term-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">terminal</span></div>
+              <div class="term-body"><span id="heroType"></span><span class="caret"></span></div>
+            </div>
+            <a class="btn" href="#courses" data-i18n="home.cta">Explore Courses</a>
+          </div>
+          <div class="space">
+            <div class="stars"></div>
+            <img id="heroImage" class="hero-image" src="assets/images/HWS%20Background.jpg" alt="HWS Security Background">
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="page-section">
+        <div class="about-layout">
+          <div class="about-main">
+            <h2 data-i18n="about.title">About Us</h2>
+            <p class="lead" data-i18n="about.intro">Security‑minded web learning in terminal‑green style.</p>
+            <div class="feature-grid">
+              <div class="card"><h3 data-i18n="about.feature1.title">Security First</h3><p data-i18n="about.feature1.copy">Practical, safe‑by‑default patterns.</p></div>
+              <div class="card"><h3 data-i18n="about.feature2.title">Minimal Design</h3><p data-i18n="about.feature2.copy">Focus on clarity and speed.</p></div>
+              <div class="card"><h3 data-i18n="about.feature3.title">Hands‑on</h3><p data-i18n="about.feature3.copy">Build real projects step by step.</p></div>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item"><div class="tl-year" data-i18n="about.timeline.2022">2022</div><div class="tl-copy" data-i18n="about.timeline.2022.copy">Founded and launched core lessons.</div></div>
+              <div class="timeline-item"><div class="tl-year" data-i18n="about.timeline.2023">2023</div><div class="tl-copy" data-i18n="about.timeline.2023.copy">Expanded courses and community events.</div></div>
+              <div class="timeline-item"><div class="tl-year" data-i18n="about.timeline.2024">2024</div><div class="tl-copy" data-i18n="about.timeline.2024.copy">Security track and advanced tooling.</div></div>
+            </div>
+            <blockquote class="quote" data-i18n="about.quote">Code fast, ship safely, learn together.</blockquote>
+            <a class="btn" href="#register" data-i18n="about.cta.btn">Join the Guild</a>
+          </div>
+          <aside class="about-aside card">
+            <div class="about-aside-block"><div class="stat-num" data-i18n="about.stats.learners_num">10K+</div><div class="stat-label" data-i18n="about.stats.learners">Learners</div></div>
+            <div class="about-aside-block"><div class="stat-num" data-i18n="about.stats.projects_num">120+</div><div class="stat-label" data-i18n="about.stats.projects">Projects</div></div>
+            <div class="about-aside-block"><div class="stat-num" data-i18n="about.stats.articles_num">80+</div><div class="stat-label" data-i18n="about.stats.articles">Articles</div></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="courses" class="page-section">
+        <h2 data-i18n="courses.title">Courses</h2>
+        <div class="courses-layout">
+          <aside class="courses-sidebar">
+            <div class="card">
+              <h3 data-i18n="courses.categories">Categories</h3>
+              <div class="filter-group">
+                <button class="chip active" data-cat="all" data-i18n="courses.category.all">All</button>
+                <button class="chip" data-cat="frontend" data-i18n="courses.category.frontend">Frontend</button>
+                <button class="chip" data-cat="backend" data-i18n="courses.category.backend">Backend</button>
+                <button class="chip" data-cat="security" data-i18n="courses.category.security">Security</button>
+                <button class="chip" data-cat="devops" data-i18n="courses.category.devops">DevOps</button>
+              </div>
+              <input id="coursesSearch" type="text" class="filter-input" data-i18n-placeholder="courses.search_ph" placeholder="Search courses">
+            </div>
+          </aside>
+          <div class="courses-main">
+            <div id="courseGrid" class="course-grid">
+              <div class="course-card">
+                <div class="course-thumb"></div>
+                <div class="course-body">
+                  <div class="course-title" data-i18n="courses.item1.title">Frontend Fundamentals</div>
+                  <div class="course-meta" data-i18n="courses.item1.meta">By HWS • 12h • Beginner</div>
+                  <div class="course-rating"><span>★★★★★</span> <span class="rating-count" data-i18n="courses.item1.rating_count">(1,203)</span></div>
+                  <div class="course-price" data-i18n="courses.item1.price">$19.99</div>
+                  <a class="btn ghost" href="#register" data-i18n="courses.item.cta">Enroll</a>
+                </div>
+              </div>
+              <div class="course-card">
+                <div class="course-thumb"></div>
+                <div class="course-body">
+                  <div class="course-title" data-i18n="courses.item2.title">React & Routing</div>
+                  <div class="course-meta" data-i18n="courses.item2.meta">By HWS • 16h • Intermediate</div>
+                  <div class="course-rating"><span>★★★★☆</span> <span class="rating-count" data-i18n="courses.item2.rating_count">(987)</span></div>
+                  <div class="course-price" data-i18n="courses.item2.price">$24.99</div>
+                  <a class="btn ghost" href="#register" data-i18n="courses.item.cta">Enroll</a>
+                </div>
+              </div>
+              <div class="course-card">
+                <div class="course-thumb"></div>
+                <div class="course-body">
+                  <div class="course-title" data-i18n="courses.item3.title">Backend Basics</div>
+                  <div class="course-meta" data-i18n="courses.item3.meta">By HWS • 18h • Intermediate</div>
+                  <div class="course-rating"><span>★★★★☆</span> <span class="rating-count" data-i18n="courses.item3.rating_count">(1,104)</span></div>
+                  <div class="course-price" data-i18n="courses.item3.price">$29.99</div>
+                  <a class="btn ghost" href="#register" data-i18n="courses.item.cta">Enroll</a>
+                </div>
+              </div>
+              <div class="course-card">
+                <div class="course-thumb"></div>
+                <div class="course-body">
+                  <div class="course-title" data-i18n="courses.item4.title">Security Essentials</div>
+                  <div class="course-meta" data-i18n="courses.item4.meta">By HWS • 10h • Beginner</div>
+                  <div class="course-rating"><span>★★★★★</span> <span class="rating-count" data-i18n="courses.item4.rating_count">(1,560)</span></div>
+                  <div class="course-price" data-i18n="courses.item4.price">$19.99</div>
+                  <a class="btn ghost" href="#register" data-i18n="courses.item.cta">Enroll</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="blogs" class="page-section">
+        <h2 data-i18n="blogs.title">Blogs</h2>
+        <div class="blog-layout">
+          <div class="blog-main" id="blogMain">
+            <article class="card blog-item" data-category="design">
+              <h3 data-i18n="blogs.post1.title">The Terminal Aesthetic</h3>
+              <p data-i18n="blogs.post1.copy">Why green‑on‑black still inspires developers.</p>
+              <a class="btn ghost" href="#blogs" data-i18n="blogs.post1.cta">Read</a>
+            </article>
+            <article class="card blog-item" data-category="theme">
+              <h3 data-i18n="blogs.post2.title">Dark Mode Done Right</h3>
+              <p data-i18n="blogs.post2.copy">Designing accessible themes for night owls.</p>
+              <a class="btn ghost" href="#blogs" data-i18n="blogs.post2.cta">Read</a>
+            </article>
+            <article class="card blog-item" data-category="dev">
+              <h3 data-i18n="blogs.post3.title">Routing Without Frameworks</h3>
+              <p data-i18n="blogs.post3.copy">Hash‑based navigation with vanilla JS.</p>
+              <a class="btn ghost" href="#blogs" data-i18n="blogs.post3.cta">Read</a>
+            </article>
+            <article class="card blog-item" data-category="dev">
+              <h3 data-i18n="blogs.post4.title">Minimal i18n in Static Sites</h3>
+              <p data-i18n="blogs.post4.copy">Data attributes and simple dictionaries.</p>
+              <a class="btn ghost" href="#blogs" data-i18n="blogs.post4.cta">Read</a>
+            </article>
+          </div>
+          <aside class="blog-sidebar">
+            <div class="card">
+              <h3 data-i18n="blogs.filter.title">Filter</h3>
+              <input id="blogSearch" type="text" class="filter-input" data-i18n-placeholder="blogs.filter.search_ph" placeholder="Search blogs">
+              <div class="filter-group">
+                <button class="chip active" data-cat="all" data-i18n="blogs.filter.all">All</button>
+                <button class="chip" data-cat="dev" data-i18n="blogs.filter.dev">Dev</button>
+                <button class="chip" data-cat="design" data-i18n="blogs.filter.design">Design</button>
+                <button class="chip" data-cat="theme" data-i18n="blogs.filter.theme">Theme</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="contact" class="page-section">
+        <h2 data-i18n="contact.title">Contact</h2>
+        <form id="contactForm" class="form">
+          <label data-i18n="contact.name">Name</label>
+          <input type="text" id="contactName" data-i18n-placeholder="contact.name_ph" placeholder="Your name">
+          <label data-i18n="contact.email">Email</label>
+          <input type="email" id="contactEmail" data-i18n-placeholder="contact.email_ph" placeholder="name@example.com">
+          <label data-i18n="contact.message">Message</label>
+          <textarea id="contactMsg" rows="4" data-i18n-placeholder="contact.message_ph" placeholder="Say hello"></textarea>
+          <button class="btn" type="submit" data-i18n="contact.submit">Send</button>
+          <div id="contactSuccess" class="success hidden" data-i18n="contact.success">Message sent. We'll get back to you.</div>
+        </form>
+      </section>
+
+      <section id="signin" class="page-section">
+        <h2 data-i18n="signin.title">Sign In</h2>
+        <form id="signinForm" class="form">
+          <label data-i18n="signin.email">Email</label>
+          <input type="email" id="signinEmail" data-i18n-placeholder="signin.email_ph" placeholder="name@example.com">
+          <label data-i18n="signin.password">Password</label>
+          <input type="password" id="signinPassword" data-i18n-placeholder="signin.password_ph" placeholder="Your password">
+          <button class="btn" type="submit" data-i18n="signin.submit">Sign In</button>
+        </form>
+      </section>
+
+      <section id="register" class="page-section">
+        <h2 data-i18n="register.title">Register</h2>
+        <form id="registerForm" class="form">
+          <label data-i18n="register.name">Name</label>
+          <input type="text" id="registerName" data-i18n-placeholder="register.name_ph" placeholder="Your name">
+          <label data-i18n="register.email">Email</label>
+          <input type="email" id="registerEmail" data-i18n-placeholder="register.email_ph" placeholder="name@example.com">
+          <label data-i18n="register.password">Password</label>
+          <input type="password" id="registerPassword" data-i18n-placeholder="register.password_ph" placeholder="Create a password">
+          <button class="btn" type="submit" data-i18n="register.submit">Create Account</button>
+        </form>
+      </section>
+
+      <section id="dashboard" class="page-section">
+        <div id="dashboard"></div>
+      </section>
+
+      <section id="profile" class="page-section">
+        <div id="profile"></div>
+      </section>
+
+      <section id="theme-editor" class="page-section">
+        <div id="theme-editor"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-wrap">
+        <div class="footer-cta">
+          <div class="footer-cta-text">
+            <div class="footer-title" data-i18n="footer.cta.title">Join the HWS Guild</div>
+            <p data-i18n="footer.cta.copy">Get weekly terminal‑green tips & security‑minded practices.</p>
+          </div>
+          <a href="#register" class="btn cta-btn" data-i18n="footer.cta.btn">Join Now</a>
+        </div>
+        <div class="footer-columns">
+        <div class="footer-brand footer-col">
+          <div class="logo small">
+            <svg class="logo-mark" viewBox="0 0 64 64" width="36" height="36">
+              <circle cx="32" cy="32" r="30" fill="none" stroke="var(--accent)" stroke-width="3"></circle>
+              <rect x="18" y="22" width="28" height="20" fill="none" stroke="var(--accent)" stroke-width="3" rx="4"></rect>
+              <path d="M26 32h12" stroke="var(--accent)" stroke-width="3"></path>
+            </svg>
+          </div>
+          <div class="footer-title" data-i18n="footer.brand">HWS Security</div>
+          <p data-i18n="footer.brand_copy">Terminal‑green learning and tools.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-title" data-i18n="footer.resources">Resources</div>
+          <div class="footer-links">
+            <a href="#home" class="footer-link" data-i18n="nav.home">Home</a>
+            <a href="#about" class="footer-link" data-i18n="nav.about">About Us</a>
+            <a href="#courses" class="footer-link" data-i18n="nav.courses">Courses</a>
+            <a href="#blogs" class="footer-link" data-i18n="nav.blogs">Blogs</a>
+            <a href="#contact" class="footer-link" data-i18n="nav.contact">Contact</a>
+            <a href="#signin" class="footer-link" data-i18n="nav.signin">Sign In</a>
+            <a href="#register" class="footer-link" data-i18n="nav.register">Register</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="footer-title" data-i18n="footer.project">Project Linked</div>
+          <div class="social">
+            <a href="#" aria-label="GitHub" class="social-link">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22"><path d="M12 .5a11.5 11.5 0 00-3.6 22.4c.6.1.8-.2.8-.6v-2.1c-3.4.7-4.1-1.6-4.1-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.6-1.4-5.6-6.2 0-1.4.5-2.5 1.2-3.4-.1-.3-.5-1.7.1-3.4 0 0 1-.3 3.5 1.3a12 12 0 016.4 0c2.5-1.6 3.5-1.3 3.5-1.3.6 1.7.2 3.1.1 3.4.8.9 1.2 2 1.2 3.4 0 4.8-2.9 5.9-5.6 6.2.5.4.9 1.2.9 2.5v3.7c0 .4.2.7.8.6A11.5 11.5 0 0012 .5z"></path></svg>
+            </a>
+            <a href="#" aria-label="Twitter" class="social-link">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22"><path d="M19.6 7.9c.01.2.01.4.01.6 0 6.2-4.7 13.3-13.3 13.3-2.6 0-5.1-.8-7.2-2.2.4.05.9.07 1.3.07 2.2 0 4.3-.74 5.9-2a4.7 4.7 0 01-4.4-3.3c.3.05.6.08.9.08.4 0 .8-.06 1.2-.16a4.7 4.7 0 01-3.7-4.6v-.06c.6.33 1.3.53 2 .55a4.7 4.7 0 01-2.1-3.9c0-.86.23-1.66.63-2.35a13.3 13.3 0 009.7 4.9 4.7 4.7 0 018-4.3 9.4 9.4 0 003-.1 4.7 4.7 0 01-2.1 2.6 9.4 9.4 0 002.7-.7 10 10 0 01-2.4 2.5z"></path></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="social-link">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 8.98h4v12H3v-12zm7.5 0h3.8v1.64h.06a4.2 4.2 0 013.77-2.07c4.04 0 4.79 2.66 4.79 6.12v6.31h-4v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.15 1.46-2.15 2.97v5.7h-4v-12z"></path></svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="social-link">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.3 31.3 0 0024 12a31.3 31.3 0 00-.5-5.8zM9.6 15.5V8.5l6.4 3.5-6.4 3.5z"></path></svg>
+            </a>
+        </div>
+        </div>
+        <div class="footer-col">
+          <div class="footer-title" data-i18n="footer.subscribe">Subscribe</div>
+          <form id="subscribeForm" class="subscribe-form">
+            <input type="email" id="subscribeEmail" data-i18n-placeholder="footer.subscribe_ph" placeholder="Enter your email">
+            <button class="btn" type="submit" data-i18n="footer.subscribe_btn">Subscribe</button>
+          </form>
+          <div id="subscribeSuccess" class="success hidden" data-i18n="footer.subscribe_success">Subscribed. Check your inbox.</div>
+        </div>
+        </div>
+        <div class="footer-social">
+          <div class="social">
+            <a href="#" aria-label="GitHub" class="social-link">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22"><path d="M12 .5a11.5 11.5 0 00-3.6 22.4c.6.1.8-.2.8-.6v-2.1c-3.4.7-4.1-1.6-4.1-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.6-1.4-5.6-6.2 0-1.4.5-2.5 1.2-3.4-.1-.3-.5-1.7.1-3.4 0 0 1-.3 3.5 1.3a12 12 0 016.4 0c2.5-1.6 3.5-1.3 3.5-1.3 .6 1.7 .2 3.1 .1 3.4 .8 .9 1.2 2 1.2 3.4 0 4.8-2.9 5.9-5.6 6.2 .5 .4 .9 1.2 .9 2.5v3.7c0 .4 .2 .7 .8 .6A11.5 11.5 0 0012 .5z"></path></svg>
+            </a>
+            <a href="#" aria-label="Twitter" class="social-link">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22"><path d="M19.6 7.9c.01 .2 .01 .4 .01 .6 0 6.2-4.7 13.3-13.3 13.3-2.6 0-5.1-.8-7.2-2.2 .4 .05 .9 .07 1.3 .07 2.2 0 4.3-.74 5.9-2a4.7 4.7 0 0 1-4.4-3.3c.3 .05 .6 .08 .9 .08 .4 0 .8-.06 1.2-.16a4.7 4.7 0 0 1-3.7-4.6v-.06c.6 .33 1.3 .53 2 .55a4.7 4.7 0 0 1-2.1-3.9c0-.86 .23-1.66 .63-2.35a13.3 13.3 0 0 0 9.7 4.9 4.7 4.7 0 0 1 8-4.3 9.4 9.4 0 0 0 3-.1 4.7 4.7 0 0 1-2.1 2.6 9.4 9.4 0 0 0 2.7-.7 10 10 0 0 1-2.4 2.5z"></path></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="social-link">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 8.98h4v12H3v-12zm7.5 0h3.8v1.64h.06a4.2 4.2 0 0 1 3.77-2.07c4.04 0 4.79 2.66 4.79 6.12v6.31h-4v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.15 1.46-2.15 2.97v5.7h-4v-12z"></path></svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="social-link">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4 .6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0-.5 5.8 3 3 0 0 0 2.1 2.1c1.8 .6 9.4 .6 9.4 .6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.5V8.5l6.4 3.5-6.4 3.5z"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copyright">© <span id="year"></span> HWS</div>
+        <div class="footer-privacy"><a href="#privacy" class="footer-link" data-i18n="footer.privacy">Privacy Protection</a></div>
+      </div>
+    </footer>
+
+    <button id="backTop" class="back-top" aria-label="Back to top">
+      <svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path d="M12 4l-7 7h4v9h6v-9h4z"></path></svg>
+    </button>
+
+    <script src="assets/app.js"></script>
+  </body>
+  </html>
